@@ -9,8 +9,8 @@ const poppins = Poppins({
 });
 //
 export const metadata = {
-  title: "Mini Hackathon 2024",
-  description: "MS Club Mini Hackathon 2024",
+  title: "Mini Hackathon 2025",
+  description: "MS Club Mini Hackathon 2025",
 };
 //
 export default function RootLayout({ children }) {
