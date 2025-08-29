@@ -15,20 +15,18 @@ export default function Timeline() {
   }, []);
 
   return (
-    <main className="relative custom-gradient mb-10">
+    <main className="relative mb-10">
       <h1
         id="timeline"
         className="text-3xl font-bold text-center mt-20 text-[#1E293B] min-[744px]:text-[38px] min-[1440px]:text-6xl mb-5"
       >
-
-        
         Timeline
       </h1>
       <div className="p-5 md:p-0">
         <img
-          src="images/2025-images/hero-image-up.png"
+          src="images/2025-images/timeline-top-2.png"
           alt="timeline-top"
-          className="h-[97px] min-[744px]:ml-12 lg:mx-auto lg:pl-10 min-[744px]:h-[171px] min-[744px]:ml-20 min-[1080px]:w-[210px] min-[1080px]:h-[170px] min-[744px]:h-[171px] min-[1440px]:h-[258px] min-[1440px]:w-[270px]"
+          className="h-[97px] min-[744px]:ml-12 lg:mx-auto lg:pl-10 min-[744px]:h-[171px] min-[744px]:ml-20 min-[1080px]:w-[210px] min-[1080px]:h-[170px] min-[744px]:h-[171px] min-[1440px]:h-[258px] min-[1440px]:w-[270px] opacity-50"
         />
         {/* <img
           src="images/design-left.png"
@@ -82,15 +80,18 @@ export default function Timeline() {
           </h1>
         )}
         <img
-          src="images/2025-images/timeline-mid-2.png"
+          src="images/2025-images/timeline-mid.png"
           alt="timeline-mid"
-          className="h-[98px] -mt-10 min-[744px]:left-24 absolute min-[1170px]:left-48 lg:top-[48%] min-[744px]:h-[120px] min-[744px]:w-[120px] min-[1440px]:h-[210px] min-[1440px]:w-[218px]"
+          className="h-[98px] -mt-10 min-[744px]:left-24 absolute min-[1170px]:left-48 lg:top-[48%] min-[744px]:h-[120px] min-[744px]:w-[120px] min-[1440px]:h-[210px] min-[1440px]:w-[218px] opacity-50"
         />
         <img
-          src="images/2025-images/timeline-end-2.png"
+          src="images/2025-images/timeline-end.png"
           alt="timeline-end"
-          className="h-[113px] w-[113px] object-contain image-rendering-crisp-edges ml-auto mr-10 -mt-10 lg:-mt-52 lg:mr-20 min-[744px]:h-[171px] min-[744px]:w-[171px] min-[1440px]:h-[258px] min-[1440px]:w-[258px]"
-        />
+          className="h-[135px] w-[135px] object-contain image-rendering-crisp-edges ml-auto mr-10 -mt-10 
+             lg:-mt-52 lg:mr-20 
+             min-[744px]:h-[200px] min-[744px]:w-[200px] 
+             min-[1440px]:h-[300px] min-[1440px]:w-[300px] opacity-50"
+        /> {/* make little big bigger this image */}
       </div>
     </main>
   );

@@ -8,7 +8,6 @@ export default function Home() {
   return (
     <div className="container mx-auto px-6 sm:px-16 md:px-10 lg:px-10">
       <div className="relative w-full flex flex-col items-center justify-center min-h-[600px] lg:min-h-[600px] rounded-[40px] py-12 px-6 lg:px-16 overflow-hidden my-12 lg:my-20 bg-gradient-to-br from-orange-50 via-white to-red-50 backdrop-blur-sm border border-white/20 shadow-2xl shadow-orange-100/50">
-        
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-[#EF4A23]/20 to-transparent rounded-full blur-xl animate-pulse"></div>
@@ -20,11 +19,13 @@ export default function Home() {
         <div className="absolute -bottom-8 lg:-bottom-12 right-0 lg:right-12 w-[50%] lg:w-[38%] opacity-30 transform hover:scale-105 transition-transform duration-700 ease-out">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-t from-[#EF4A23]/10 to-transparent blur-3xl"></div>
-            <Image
-              src={HackathonImage}
-              alt="Hackathon Elements"
-              className="w-full h-auto object-contain relative z-10 drop-shadow-2xl"
-            />
+            <div className="flex justify-end">
+              <Image
+                src={HackathonImage}
+                alt="Hackathon Elements"
+                className="w-3/4 h-auto object-contain relative z-10 drop-shadow-2xl"
+              />
+            </div>
           </div>
         </div>
 
@@ -50,7 +51,8 @@ export default function Home() {
 
           {/* Description */}
           <p className="text-base sm:text-lg md:text-xl text-gray-700 font-medium max-w-2xl mx-auto leading-relaxed">
-            Showcase your creativity and technical skills in our tech competition!
+            Showcase your creativity and technical skills in our tech
+            competition!
           </p>
 
           {/* Modern Button Group */}
@@ -61,8 +63,18 @@ export default function Home() {
             >
               <span className="flex items-center justify-center">
                 Register Now
-                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                <svg
+                  className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
                 </svg>
               </span>
             </button>
@@ -72,7 +84,9 @@ export default function Home() {
             >
               <span className="flex items-center justify-center">
                 Full Instructions
-                <span className="material-symbols-outlined ml-2 text-xl group-hover:translate-x-1 transition-transform duration-300">chevron_right</span>
+                <span className="material-symbols-outlined ml-2 text-xl group-hover:translate-x-1 transition-transform duration-300">
+                  chevron_right
+                </span>
               </span>
             </button>
           </div>
