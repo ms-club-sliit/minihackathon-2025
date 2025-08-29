@@ -1,4 +1,4 @@
-# MS Club - Mini Hackathon 2024
+# MS Club - Mini Hackathon 2025
 
 ## Quick Links
   - [Figma Design](#figma-design)
