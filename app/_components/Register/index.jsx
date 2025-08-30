@@ -313,19 +313,98 @@ const Register = () => {
     return `${prefix}${paddedNumber}`;
   }
 
-  return (
-    <main className="">
+ return (
+  <main className="min-h-screen bg-white relative overflow-hidden">
+    {/* Animated Geometric Background Elements */}
+    <div className="fixed inset-0 pointer-events-none">
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        @keyframes rotate {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+          0%, 100% { transform: scale(1) rotate(0deg); }
+          50% { transform: scale(1.1) rotate(45deg); }
+        }
+        @keyframes drift {
+          0%, 100% { transform: translateX(0px) translateY(0px); }
+          50% { transform: translateX(15px) translateY(-10px); }
+        }
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0px) scale(1); }
+          50% { transform: translateY(-15px) scale(1.1); }
+        }
+        @keyframes wiggle {
+          0%, 100% { transform: rotate(0deg); }
+          25% { transform: rotate(5deg); }
+          75% { transform: rotate(-5deg); }
+        }
+        @keyframes morph {
+          0%, 100% { transform: rotate(0deg) scale(1); }
+          33% { transform: rotate(15deg) scale(1.05); }
+          66% { transform: rotate(-15deg) scale(0.95); }
+        }
+        .float { animation: float 6s ease-in-out infinite; }
+        .rotate { animation: rotate 20s linear infinite; }
+        .pulse { animation: pulse 4s ease-in-out infinite; }
+        .drift { animation: drift 8s ease-in-out infinite; }
+        .bounce { animation: bounce 3s ease-in-out infinite; }
+        .wiggle { animation: wiggle 5s ease-in-out infinite; }
+        .morph { animation: morph 7s ease-in-out infinite; }
+      `}</style>
+
+      {/* Circles - Reduced opacity */}
+      <div className="absolute -top-10 -left-10 w-40 h-40 bg-red-500/20 rounded-full float"></div> {/* was /30 */}
+      <div className="absolute bottom-20 right-20 w-48 h-48 bg-blue-500/20 rounded-full drift"></div> {/* was /30 */}
+      <div className="absolute top-20 right-1/4 w-16 h-16 bg-red-400/15 rounded-full bounce" style={{animationDelay: '1s'}}></div> {/* was /25 */}
+      <div className="absolute bottom-1/4 left-20 w-20 h-20 bg-yellow-300/15 rounded-full wiggle" style={{animationDelay: '2s'}}></div> {/* was /25 */}
+      <div className="absolute top-3/4 left-1/6 w-24 h-24 bg-indigo-500/15 rounded-full pulse" style={{animationDelay: '4s'}}></div> {/* was /25 */}
+
+      {/* Squares - Reduced opacity */}
+      <div className="absolute top-2/3 left-1/2 w-20 h-20 bg-green-600/15 rounded-sm morph" style={{animationDelay: '0.5s'}}></div> {/* was /25 */}
+      <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-blue-600/10 rounded-sm bounce" style={{animationDelay: '3s'}}></div> {/* was /20 */}
+      <div className="absolute bottom-1/5 right-1/4 w-20 h-20 bg-purple-500/15 rounded-sm wiggle"></div> {/* was /25 */}
+      <div className="absolute top-1/6 left-1/3 w-16 h-16 bg-pink-500/15 rounded-sm float"></div> {/* was /25 */}
+      <div className="absolute bottom-1/3 left-1/4 w-14 h-14 bg-orange-500/15 rounded-sm pulse"></div> {/* was /25 */}
+      <div className="absolute top-1/2 left-1/5 w-18 h-18 bg-teal-500/15 rounded-sm drift"></div> {/* was /25 */}
+      <div className="absolute bottom-1/6 right-1/3 w-16 h-16 bg-lime-500/15 rounded-sm morph"></div> {/* was /25 */}
+
+      {/* Crosses - Reduced opacity */}
+      <div className="absolute top-1/4 left-1/4 w-20 h-20 rotate">
+        <div className="absolute inset-x-8 inset-y-0 bg-yellow-400/20 rounded-sm"></div> {/* was /30 */}
+        <div className="absolute inset-x-0 inset-y-8 bg-yellow-400/20 rounded-sm"></div> {/* was /30 */}
+      </div>
+      <div className="absolute bottom-1/3 right-1/2 w-16 h-16 float" style={{animationDelay: '1.5s'}}>
+        <div className="absolute inset-x-5 inset-y-0 bg-red-500/15 rounded-sm"></div> {/* was /25 */}
+        <div className="absolute inset-x-0 inset-y-5 bg-red-500/15 rounded-sm"></div> {/* was /25 */}
+      </div>
+      <div className="absolute top-1/6 right-1/6 w-12 h-12 wiggle" style={{animationDelay: '2.5s'}}>
+        <div className="absolute inset-x-3 inset-y-0 bg-purple-600/15 rounded-sm"></div> {/* was /25 */}
+        <div className="absolute inset-x-0 inset-y-3 bg-purple-600/15 rounded-sm"></div> {/* was /25 */}
+      </div>
+    </div>
+
+    {/* Content */}
+    <div className="relative z-10">
       {showSpinner ? (
         <div className="flex justify-center items-center h-screen">
-          <Spin size="large" />
+          <div className="bg-white/90 backdrop-blur-sm p-8 rounded-lg shadow-lg">
+            <Spin size="large" />
+          </div>
         </div>
       ) : (
         <>
           {isTicketLoading && (
             <div className="flex justify-center items-center h-screen">
-              <Row>
-                Generating Ticket... &nbsp; <Spin size="large" />
-              </Row>
+              <div className="bg-white/90 backdrop-blur-sm p-8 rounded-lg shadow-lg">
+                <Row>
+                  Generating Ticket... &nbsp; <Spin size="large" />
+                </Row>
+              </div>
             </div>
           )}
           {showTicket && (
@@ -336,16 +415,24 @@ const Register = () => {
             />
           )}
           <div className="mx-2 my-2 px-2 lg:mx-20 lg:my-20 lg:px-20">
-            <h2 className="text-lg sm:text-xl lg:text-2xl my-6 lg:my-10 p-2">
-              Register Your Team
-            </h2>
-            <div className="mb-6 lg:mb-10 p-2">
-              <Steps current={current} size="small" items={stepItems} />
+            <div className="bg-white/70 backdrop-blur-sm rounded-lg p-4 mb-6 transition-all duration-500 hover:bg-white/80 hover:shadow-lg">
+              <h2 className="text-lg sm:text-xl lg:text-2xl my-6 lg:my-10 p-2 text-gray-800 transition-colors duration-300">
+                Register Your Team
+              </h2>
             </div>
+
+            <div className="mb-6 lg:mb-10 p-2">
+              <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 transition-all duration-500 hover:bg-white/70">
+                <Steps current={current} size="small" items={stepItems} />
+              </div>
+            </div>
+
             <div className="my-6 lg:my-10 step-body">
               {showSpinner ? (
                 <div className="flex justify-center items-center h-64">
-                  <Spin size="large" />
+                  <div className="bg-white/90 backdrop-blur-sm p-8 rounded-lg shadow-lg">
+                    <Spin size="large" />
+                  </div>
                 </div>
               ) : (
                 <>
@@ -401,8 +488,11 @@ const Register = () => {
           </div>
         </>
       )}
-    </main>
-  );
+    </div>
+  </main>
+);
+
+
 };
 
 export default Register;
