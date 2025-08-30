@@ -316,18 +316,16 @@ const Register = () => {
   }
 
   return (
-  <main className="">
-    {/* Hero Image (Right-Aligned Background) */}
-    <div className="absolute -bottom-8 lg:-bottom-12 right-0 lg:right-12 w-[50%] lg:w-[38%] opacity-30 transform hover:scale-105 transition-transform duration-700 ease-out z-0">
-      <div className="relative">
-        <div className="absolute inset-0 bg-gradient-to-t from-[#EF4A23]/10 to-transparent blur-3xl"></div>
-        <div className="flex justify-end">
-          <Image
-            src={HackathonImage}
-            alt="Hackathon Elements"
-            className="w-3/4 h-auto object-contain relative z-10 drop-shadow-2xl"
-          />
-        </div>
+  <main className="relative min-h-screen">
+    {/* Hero Image (Right-Aligned Background, Full Height) */}
+    <div className="absolute top-0 right-0 h-full w-[50%] lg:w-[38%] opacity-30 z-0">
+      <div className="relative h-full flex justify-end items-end">
+        <Image
+          src={HackathonImage}
+          alt="Hackathon Elements"
+          className="h-full w-auto object-contain drop-shadow-2xl"
+          style={{ height: "130%", width: "auto" }} // Increased size
+        />
       </div>
     </div>
 
@@ -411,6 +409,7 @@ const Register = () => {
     )}
   </main>
 );
+
 
 };
 
