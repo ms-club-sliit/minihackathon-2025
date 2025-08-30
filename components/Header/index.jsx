@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const socialMedia = [
   {
@@ -50,6 +50,53 @@ export default function Header() {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+
+  // Helper function to clean up blur effects
+  const cleanupBlurEffects = () => {
+    document.body.style.overflow = 'unset';
+    const bodyChildren = Array.from(document.body.children);
+    bodyChildren.forEach((child) => {
+      child.style.filter = 'none';
+      child.style.pointerEvents = 'auto';
+    });
+  };
+
+  // Apply blur effect to page content when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+      // Add blur to all direct children of body except our mobile menu
+      const bodyChildren = Array.from(document.body.children);
+      bodyChildren.forEach((child) => {
+        if (!child.querySelector('[data-mobile-menu]')) {
+          child.style.filter = 'blur(20px)';
+          child.style.pointerEvents = 'none';
+        }
+      });
+    } else {
+      cleanupBlurEffects();
+    }
+
+    return () => {
+      cleanupBlurEffects();
+    };
+  }, [menuOpen]);
+
+  // Handle window resize to clean up blur effects when switching to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      // Check if we're in desktop view (lg breakpoint is 1024px in Tailwind)
+      if (window.innerWidth >= 1024 && menuOpen) {
+        setMenuOpen(false); // This will trigger the cleanup via the previous useEffect
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [menuOpen]);
 
   return (
     <main className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
@@ -131,11 +178,12 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-white/95 backdrop-blur-md lg:hidden transition-all duration-300 ${
+        className={`fixed inset-0 bg-white lg:hidden transition-all duration-300 z-[100] ${
           menuOpen
             ? "opacity-100 visible"
             : "opacity-0 invisible"
         }`}
+        data-mobile-menu
       >
         <div className="flex flex-col h-full">
           
