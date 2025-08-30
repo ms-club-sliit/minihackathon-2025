@@ -11,11 +11,11 @@ export default function Home() {
     <main>
       <Hero />
       <CountdownTimer />
-      <Sponsor />
       <Eligibility />
       <Timeline />
       <Gallery />
       <PastWinnersList />
+      <Sponsor />
     </main>
   );
 }
