@@ -13,6 +13,8 @@ import EmailTemplate from "../EmailTemplate/EmailTemplate";
 import { supabase } from "@/app/supabase";
 import ReactDOMServer from "react-dom/server";
 import { useRouter } from 'next/navigation';
+import HackathonImage from "../../../public/images/2025-images/hero-image-up.png";
+import Image from "next/image";
 
 function jsx2html(element) {
   return ReactDOMServer.renderToString(element);
@@ -314,95 +316,102 @@ const Register = () => {
   }
 
   return (
-    <main className="">
-      {showSpinner ? (
-        <div className="flex justify-center items-center h-screen">
-          <Spin size="large" />
+  <main className="">
+    {/* Hero Image (Right-Aligned Background) */}
+    <div className="absolute -bottom-8 lg:-bottom-12 right-0 lg:right-12 w-[50%] lg:w-[38%] opacity-30 transform hover:scale-105 transition-transform duration-700 ease-out z-0">
+      <div className="relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#EF4A23]/10 to-transparent blur-3xl"></div>
+        <div className="flex justify-end">
+          <Image
+            src={HackathonImage}
+            alt="Hackathon Elements"
+            className="w-3/4 h-auto object-contain relative z-10 drop-shadow-2xl"
+          />
         </div>
-      ) : (
-        <>
-          {isTicketLoading && (
-            <div className="flex justify-center items-center h-screen">
-              <Row>
-                Generating Ticket... &nbsp; <Spin size="large" />
-              </Row>
-            </div>
-          )}
-          {showTicket && (
-            <TicketPopup
-              onClose={onClose}
-              onRender={onRender}
-              {...ticketData}
-            />
-          )}
-          <div className="mx-2 my-2 px-2 lg:mx-20 lg:my-20 lg:px-20">
-            <h2 className="text-lg sm:text-xl lg:text-2xl my-6 lg:my-10 p-2">
-              Register Your Team
-            </h2>
-            <div className="mb-6 lg:mb-10 p-2">
-              <Steps current={current} size="small" items={stepItems} />
-            </div>
-            <div className="my-6 lg:my-10 step-body">
-              {showSpinner ? (
-                <div className="flex justify-center items-center h-64">
-                  <Spin size="large" />
-                </div>
-              ) : (
-                <>
-                  {current === 0 && (
-                    <Step1
-                      stepData={stepData.step1}
-                      next={next}
-                      setHook={setStepData}
-                    />
-                  )}
-                  {current === 1 && (
-                    <Step2
-                      stepData={stepData.step2}
-                      next={next}
-                      setHook={setStepData}
-                      BackHook={prev}
-                    />
-                  )}
-                  {current === 2 && (
-                    <Step3
-                      stepData={stepData.step3}
-                      next={next}
-                      setHook={setStepData}
-                      BackHook={prev}
-                    />
-                  )}
-                  {current === 3 && (
-                    <Step4
-                      stepData={stepData.step4}
-                      next={next}
-                      setHook={setStepData}
-                      BackHook={prev}
-                    />
-                  )}
-                  {current === 4 && (
-                    <Step5
-                      stepData={stepData.step5}
-                      next={next}
-                      setHook={setStepData}
-                      BackHook={prev}
-                    />
-                  )}
-                  {current === 5 && (
-                    <Step6
-                      teamData={stepData}
-                      next={next}
-                      onSubmitComplete={onSubmitComplete}
-                    />
-                  )}
-                </>
-              )}
-            </div>
+      </div>
+    </div>
+
+    {showSpinner ? (
+      <div className="flex justify-center items-center h-screen">
+        <Spin size="large" />
+      </div>
+    ) : (
+      <>
+        {isTicketLoading && (
+          <div className="flex justify-center items-center h-screen">
+            <Row>
+              Generating Ticket... &nbsp; <Spin size="large" />
+            </Row>
           </div>
-        </>
-      )}
-    </main>
-  );
+        )}
+        {showTicket && (
+          <TicketPopup onClose={onClose} onRender={onRender} {...ticketData} />
+        )}
+        <div className="mx-2 my-2 px-2 lg:mx-20 lg:my-20 lg:px-20 relative z-10">
+          <h2 className="text-lg sm:text-xl lg:text-2xl my-6 lg:my-10 p-2">
+            Register Your Team
+          </h2>
+          <div className="mb-6 lg:mb-10 p-2">
+            <Steps current={current} size="small" items={stepItems} />
+          </div>
+          <div className="my-6 lg:my-10 step-body">
+            {showSpinner ? (
+              <div className="flex justify-center items-center h-64">
+                <Spin size="large" />
+              </div>
+            ) : (
+              <>
+                {current === 0 && (
+                  <Step1 stepData={stepData.step1} next={next} setHook={setStepData} />
+                )}
+                {current === 1 && (
+                  <Step2
+                    stepData={stepData.step2}
+                    next={next}
+                    setHook={setStepData}
+                    BackHook={prev}
+                  />
+                )}
+                {current === 2 && (
+                  <Step3
+                    stepData={stepData.step3}
+                    next={next}
+                    setHook={setStepData}
+                    BackHook={prev}
+                  />
+                )}
+                {current === 3 && (
+                  <Step4
+                    stepData={stepData.step4}
+                    next={next}
+                    setHook={setStepData}
+                    BackHook={prev}
+                  />
+                )}
+                {current === 4 && (
+                  <Step5
+                    stepData={stepData.step5}
+                    next={next}
+                    setHook={setStepData}
+                    BackHook={prev}
+                  />
+                )}
+                {current === 5 && (
+                  <Step6
+                    teamData={stepData}
+                    next={next}
+                    onSubmitComplete={onSubmitComplete}
+                  />
+                )}
+              </>
+            )}
+          </div>
+        </div>
+      </>
+    )}
+  </main>
+);
+
 };
 
 export default Register;
