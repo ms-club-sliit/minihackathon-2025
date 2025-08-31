@@ -16,7 +16,6 @@ export default function Home() {
       <Timeline />
       <Gallery />
       <PastWinnersList />
-      <Sponsor />
     </main>
   );
 }

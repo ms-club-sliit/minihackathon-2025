@@ -2,24 +2,43 @@
 	"data": [
 		{
 			"id": 1,
-			"position": "Winners of 2023",
+			"position": "Winner of 2024",
 			"description": "Securing the victory in the Mini Hackathon highlighted our synergy, perseverance, and inventive approach. This achievement has not only broadened our prospects but also enhanced our standing in the tech community.",
-			"imageUrl": "images/home/pastWinners/autobots.jpeg",
-			"name": "Team Autobots"
+			"imageUrl": "images/home/pastWinners/2024winners.png",
+			"name": "",
+			"year": "2024"
 		},
 		{
 			"id": 2,
-			"position": "1st Runners up of 2023",
+			"position": "1st Runners up of 2024",
 			"description": "Triumphing in the Mini Hackathon underscored our collective hard work, commitment, and ingenuity. This competition has been a catalyst for us to venture into new avenues and expand our professional network in the tech world.",
-			"imageUrl": "images/home/pastWinners/dreamshack.jpg",
-			"name": "Dreams Hack"
+			"imageUrl": "images/home/pastWinners/2024runnersup1.png",
+			"name": "",
+			"year": "2024"
 		},
 		{
 			"id": 3,
-			"position": "Winners of 2022",
+			"position": "2nd Runners up of 2024",
 			"description": "The Mini Hackathon pushed us to think outside the box and put our skills to the test. We are grateful for the recognition we received, and this competition has definitely prepared us for even greater challenges.",
-			"imageUrl": "images/home/pastWinners/winner.png",
-			"name": "Hypertext"
+			"imageUrl": "images/home/pastWinners/2024runnersup2.png",
+			"name": "",
+			"year": "2024"
+		},
+		{
+			"id": 4,
+			"position": "Winner of 2023",
+			"description": "The Mini Hackathon pushed us to think outside the box and put our skills to the test. We are grateful for the recognition we received, and this competition has definitely prepared us for even greater challenges.",
+			"imageUrl": "images/home/pastWinners/autobots.jpeg",
+			"name": "Team Autobots",
+			"year": "2023"
+		},
+		{
+			"id": 5,
+			"position": "1st Runners up of 2023",
+			"description": "The Mini Hackathon pushed us to think outside the box and put our skills to the test. We are grateful for the recognition we received, and this competition has definitely prepared us for even greater challenges.",
+			"imageUrl": "images/home/pastWinners/dreamshack.jpg",
+			"name": "Dreams Hack",
+			"year": "2023"
 		}
 	]
 }
