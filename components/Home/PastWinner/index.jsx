@@ -11,20 +11,13 @@ const PastWinnersList = () => {
       /> */}
       <div className="lg:px-20 my-2 z-10">
         <div>
-          <div className="flex justify-center items-center p-6 rounded-lg my-5">
-            
-            <div className="flex-1 h-px bg-gray-300"></div>
-            
-            <div className="mx-6">
-              <div className="bg-slate-700 text-white px-8 py-3 rounded-full">
-                <h1 className="font-semibold text-lg lg:text-xl text-center whitespace-nowrap">
-                  Past Winners
-                </h1>
-              </div>
-            </div>
-            
-            <div className="flex-1 h-px bg-gray-300"></div>
-          </div>
+          <div className="max-w-4xl mx-auto flex items-center gap-4">
+          <span aria-hidden className="h-px bg-gray-300 flex-1" />
+          <h1 className="shrink-0 inline-block bg-gray-800 text-white px-8 py-2 rounded-full text-xl font-semibold">
+            Past Winners
+          </h1>
+          <span aria-hidden className="h-px bg-gray-300 flex-1" />
+        </div>
         </div>
         <PastWinner />
       </div>
