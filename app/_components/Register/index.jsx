@@ -14,6 +14,9 @@ import { supabase } from '@/app/supabase';
 import ReactDOMServer from 'react-dom/server';
 import { useRouter } from 'next/navigation';
 import HackathonImage from "../../../public/images/2025-images/hero-image-up.png";
+import img1 from "../../../public/images/2025-images/register/Vector 1.png";
+import img2 from "../../../public/images/2025-images/register/Orange Ricky.png";
+import img3 from "../../../public/images/2025-images/register/Orange.png";
 import Image from "next/image";
 
 function jsx2html(element) {
@@ -418,132 +421,180 @@ const Register = () => {
     return `${prefix}${paddedNumber}`;
   }
 
- return (
-    <main className=''>
-          {/* Hero Image (Right-Aligned Background, Full Height) */}
-    <div className="absolute top-0 right-0 h-full w-[50%] lg:w-[38%] opacity-30 z-0">
-      <div className="relative h-full flex justify-end items-end">
-        <Image
-          src={HackathonImage}
-          alt="Hackathon Elements"
-          className="h-full w-auto object-contain drop-shadow-2xl"
-          style={{ height: "130%", width: "auto" }} // Increased size
-        />
-      </div>
+return (
+  <main className="relative overflow-hidden">
+    {/* Background Decorative Elements */}
+    <div className="absolute bottom-0 left-0 z-0 opacity-70">
+      <Image
+        src={img1}
+        alt="Decorative Element Left"
+        className="w-40 h-auto"
+      />
     </div>
-      {showSpinner ? (
-        <div className='flex justify-center items-center h-screen'>
-          <Spin size='large' />
+
+    <div className="absolute top-0 left-0 z-0 opacity-70 pointer-events-none">
+  <Image
+    src={img2}
+    alt="Decorative Element Top Left"
+    className="w-40 h-auto object-contain"
+  />
+</div>
+
+
+    <div className="absolute bottom-0 right-0 z-0 opacity-70">
+      <Image
+        src={img3}
+        alt="Decorative Element Right Bottom"
+        className="w-48 h-auto"
+      />
+    </div>
+
+    {/* Main Content */}
+    <div className="container mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
+      <div className="relative w-full flex flex-col lg:flex-row items-center justify-between min-h-[600px] rounded-[40px] py-12 px-8 lg:px-16 overflow-hidden my-12 lg:my-20 bg-[#222222]">
+        {/* Left Section */}
+        <div className="relative z-20 text-left max-w-2xl flex flex-col gap-5">
+          {/* Badge */}
+          <div className="inline-block">
+            <span className="px-4 py-1 bg-gray-600 text-white text-sm font-semibold rounded-lg">
+              MINIHACKATHON 2025
+            </span>
+          </div>
+
+          {/* Headlines */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight">
+            Register!
+          </h2>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black text-white leading-none tracking-tight">
+            Your Team
+          </h1>
+
+          {/* Description */}
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 font-medium leading-relaxed">
+            A Great Idea Becomes A Winning Solution When Minds Come Together.
+          </p>
         </div>
-      ) : (
-        <>
-          {isTicketLoading && (
-            <div className='flex justify-center items-center h-screen'>
-              <Row>
-                <div className='text-center'>
-                  <div>Generating Ticket...</div>
-                  {emailProgress.total > 0 && (
-                    <div className='mt-4'>
-                      <div>
-                        Sending Emails ({emailProgress.current}/
-                        {emailProgress.total})
-                      </div>
-                      <div className='text-sm text-gray-600 mt-2'>
-                        {emailProgress.message}
-                      </div>
-                      <div className='w-full bg-gray-200 rounded-full h-2.5 mt-2'>
-                        <div
-                          className='bg-blue-600 h-2.5 rounded-full transition-all duration-300'
-                          style={{
-                            width: `${
-                              (emailProgress.current / emailProgress.total) *
-                              100
-                            }%`,
-                          }}
-                        ></div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                &nbsp; <Spin size='large' />
-              </Row>
-            </div>
-          )}
-          {showTicket && (
-            <TicketPopup
-              onClose={onClose}
-              onRender={onRender}
-              {...ticketData}
-            />
-          )}
-          <div className='mx-2 my-2 px-2 lg:mx-20 lg:my-20 lg:px-20'>
-            <h2 className='text-lg sm:text-xl lg:text-2xl my-6 lg:my-10 p-2'>
-              Register Your Team
-            </h2>
-            <div className='mb-6 lg:mb-10 p-2'>
-              <Steps current={current} size='small' items={stepItems} />
-            </div>
-            <div className='my-6 lg:my-10 step-body'>
-              {showSpinner ? (
-                <div className='flex justify-center items-center h-64'>
-                  <Spin size='large' />
-                </div>
-              ) : (
-                <>
-                  {current === 0 && (
-                    <Step1
-                      stepData={stepData.step1}
-                      next={next}
-                      setHook={setStepData}
-                    />
-                  )}
-                  {current === 1 && (
-                    <Step2
-                      stepData={stepData.step2}
-                      next={next}
-                      setHook={setStepData}
-                      BackHook={prev}
-                    />
-                  )}
-                  {current === 2 && (
-                    <Step3
-                      stepData={stepData.step3}
-                      next={next}
-                      setHook={setStepData}
-                      BackHook={prev}
-                    />
-                  )}
-                  {current === 3 && (
-                    <Step4
-                      stepData={stepData.step4}
-                      next={next}
-                      setHook={setStepData}
-                      BackHook={prev}
-                    />
-                  )}
-                  {current === 4 && (
-                    <Step5
-                      stepData={stepData.step5}
-                      next={next}
-                      setHook={setStepData}
-                      BackHook={prev}
-                    />
-                  )}
-                  {current === 5 && (
-                    <Step6
-                      teamData={stepData}
-                      next={next}
-                      onSubmitComplete={onSubmitComplete}
-                    />
-                  )}
-                </>
-              )}
+
+        {/* Right Side Image */}
+        <div className="absolute -bottom-8 lg:-bottom-12 right-0 lg:right-12 w-[50%] lg:w-[38%] opacity-80 transform hover:scale-105 transition-transform duration-700 ease-out">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#]/10 to-transparent blur-3xl"></div>
+            <div className="flex justify-end">
+              <Image
+                src={HackathonImage}
+                alt="Hackathon Elements"
+                className="w-3/4 h-auto object-contain relative z-10 drop-shadow-2xl"
+              />
             </div>
           </div>
-        </>
-      )}
-    </main>
-  );
+        </div>
+      </div>
+    </div>
+
+    {/* Steps Section */}
+    {showSpinner ? (
+      <div className="flex justify-center items-center h-screen">
+        <Spin size="large" />
+      </div>
+    ) : (
+      <>
+        {isTicketLoading && (
+          <div className="flex justify-center items-center h-screen">
+            <Row>
+              <div className="text-center">
+                <div>Generating Ticket...</div>
+                {emailProgress.total > 0 && (
+                  <div className="mt-4">
+                    <div>
+                      Sending Emails ({emailProgress.current}/{emailProgress.total})
+                    </div>
+                    <div className="text-sm text-gray-600 mt-2">
+                      {emailProgress.message}
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                      <div
+                        className="bg-blue-600 h-2.5 rounded-full transition-all duration-300"
+                        style={{
+                          width: `${
+                            (emailProgress.current / emailProgress.total) * 100
+                          }%`,
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              &nbsp; <Spin size="large" />
+            </Row>
+          </div>
+        )}
+        {showTicket && (
+          <TicketPopup onClose={onClose} onRender={onRender} {...ticketData} />
+        )}
+        <div className="mx-2 my-2 px-2 lg:mx-20 lg:my-20 lg:px-20 relative z-10">
+          <h2 className="text-lg sm:text-xl lg:text-2xl my-6 lg:my-10 p-2">
+            Register Your Team
+          </h2>
+          <div className="mb-6 lg:mb-10 p-2">
+            <Steps current={current} size="small" items={stepItems} />
+          </div>
+          <div className="my-6 lg:my-10 step-body">
+            {showSpinner ? (
+              <div className="flex justify-center items-center h-64">
+                <Spin size="large" />
+              </div>
+            ) : (
+              <>
+                {current === 0 && (
+                  <Step1 stepData={stepData.step1} next={next} setHook={setStepData} />
+                )}
+                {current === 1 && (
+                  <Step2
+                    stepData={stepData.step2}
+                    next={next}
+                    setHook={setStepData}
+                    BackHook={prev}
+                  />
+                )}
+                {current === 2 && (
+                  <Step3
+                    stepData={stepData.step3}
+                    next={next}
+                    setHook={setStepData}
+                    BackHook={prev}
+                  />
+                )}
+                {current === 3 && (
+                  <Step4
+                    stepData={stepData.step4}
+                    next={next}
+                    setHook={setStepData}
+                    BackHook={prev}
+                  />
+                )}
+                {current === 4 && (
+                  <Step5
+                    stepData={stepData.step5}
+                    next={next}
+                    setHook={setStepData}
+                    BackHook={prev}
+                  />
+                )}
+                {current === 5 && (
+                  <Step6
+                    teamData={stepData}
+                    next={next}
+                    onSubmitComplete={onSubmitComplete}
+                  />
+                )}
+              </>
+            )}
+          </div>
+        </div>
+      </>
+    )}
+  </main>
+);
 
 
 };

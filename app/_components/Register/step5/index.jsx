@@ -220,14 +220,20 @@ const Step5 = (props) => {
                   </Button>
                 </Col>
                 <Col>
-                  <Button type="primary" htmlType="submit">
-                    Next
-                  </Button>
-                </Col>
-                <Col className="mt-2 lg:mt-0">
-                  <Button
+                  <Button type="primary"
+              htmlType="submit"
+              className="w-full"
+              style={{ backgroundColor: '#000000', borderColor: '#000000' }}
+            >
+              Next
+            </Button>
+          </Col>
+          <Col className="mt-2 lg:mt-0">
+            <Button
                     type="primary"
-                    htmlType="button"
+              htmlType="submit"
+              className="w-full"
+              style={{ backgroundColor: '#000000', borderColor: '#000000' }}
                     onClick={() => props.next()}
                   >
                     Skip and Register
