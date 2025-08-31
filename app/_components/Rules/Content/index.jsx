@@ -84,33 +84,34 @@ export default function Content() {
         <Image src={elementImages[3]} alt="" width={100} height={100} className="absolute top-36 right-0 w-24 md:w-40 opacity-70" priority />
       </div>
 
-      <div className="container mx-auto text-justify text-[#161414]">
-        {sections && Array.isArray(sections) ? (
-          sections.map((section, index) => (
-            <div key={`round-${section.title}-${index}`} className="my-10">
-              <h3 className="text-lg lg:text-2xl font-bold text-center lg:text-left uppercase mx-10 lg:mx-0">
-                {section.title}
-              </h3>
-              {section.content && (
-                <p className="lg:pl-20 mt-5 text-[#334155] text-base lg:text-lg my-5 mx-10 lg:mx-0">
-                  {section.content}
-                </p>
-              )}
-              {section.table && <Table head={section.table.head} body={section.table.body} />}
-              {section.nestedTable && <NestedTable head={section.nestedTable.head} body={section.nestedTable.body} />}
-              {section.list && (
-                <ul className="list-disc text-[#334155] text-base lg:text-lg pl-20 lg:pl-40 my-5 mr-10 lg:mr-0">
-                  {section.list.map((item, index) => <li key={index}>{item}</li>)}
-                </ul>
-              )}
-              {section.note && <p className="text-base lg:text-lg text-[#334155] font-semibold lg:pl-20 my-10 italic mx-10 lg:mx-0">{section.note}</p>}
-              {section.content2 && <p className="lg:pl-20 mt-5 text-[#334155] text-base lg:text-lg mx-10 lg:mx-0">{section.content2}</p>}
-            </div>
-          ))
-        ) : (
-          <h1 className="text-2xl text-center mt-10 font-semibold">No sections available</h1>
+      <div className="container mx-auto text-justify text-[#161414] px-6 md:px-12 lg:px-20">
+  {sections && Array.isArray(sections) ? (
+    sections.map((section, index) => (
+      <div key={`round-${section.title}-${index}`} className="my-10">
+        <h3 className="text-lg lg:text-2xl font-bold text-center lg:text-left uppercase mb-5">
+          {section.title}
+        </h3>
+        {section.content && (
+          <p className="text-[#334155] text-base lg:text-lg my-5">
+            {section.content}
+          </p>
         )}
+        {section.table && <Table head={section.table.head} body={section.table.body} />}
+        {section.nestedTable && <NestedTable head={section.nestedTable.head} body={section.nestedTable.body} />}
+        {section.list && (
+          <ul className="list-disc text-[#334155] text-base lg:text-lg my-5 pl-5 lg:pl-10">
+            {section.list.map((item, index) => <li key={index}>{item}</li>)}
+          </ul>
+        )}
+        {section.note && <p className="text-base lg:text-lg text-[#334155] font-semibold my-10 italic">{section.note}</p>}
+        {section.content2 && <p className="text-[#334155] text-base lg:text-lg my-5">{section.content2}</p>}
       </div>
+    ))
+  ) : (
+    <h1 className="text-2xl text-center mt-10 font-semibold">No sections available</h1>
+  )}
+</div>
+
     </div>
   );
 }
