@@ -231,7 +231,7 @@ const Step5 = (props) => {
           <Col className="mt-2 lg:mt-0">
             <Button
                     type="primary"
-              htmlType="submit"
+              htmlType="button"
               className="w-full"
               style={{ backgroundColor: '#000000', borderColor: '#000000' }}
                     onClick={() => props.next()}
