@@ -152,14 +152,17 @@ const Register = () => {
   const addedDoc = useRef();
 
   const onSubmitComplete = ([finalData, docRef]) => {
+    // finalData is an array from Supabase insert, get the first item
+    const teamData = Array.isArray(finalData) ? finalData[0] : finalData;
+
     setTicketData({
-      team: finalData,
+      team: teamData,
       display: false,
       isTeam: true,
       ticketNo: generateTicketID(),
     });
     setShowTicket(true);
-    addedDoc.current = { ref: docRef, ...finalData };
+    addedDoc.current = { ref: docRef, ...teamData };
   };
 
   const onClose = () => {
@@ -317,7 +320,9 @@ const Register = () => {
       const emailResults = [];
       for (let i = 0; i < teamMembers.length; i++) {
         const { index, member } = teamMembers[i];
-        const subject = `Mini Hackathon 2024 Registration - Team ${teamInfo.teamName}`;
+        const subject = `Mini Hackathon 2025 Registration - Team ${
+          teamInfo.team_name || ''
+        }`;
 
         setEmailProgress({
           current: i,
