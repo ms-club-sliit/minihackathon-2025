@@ -7,7 +7,7 @@ const Step1 = (props) => {
   const onFinish = (values) => {
     console.log("Success:", values);
     let stepData = {
-      teamname: values.teamname,
+      teamName: values.teamName,
       link: values.link
     }
     props.setHook("step1", stepData);
@@ -35,12 +35,12 @@ const Step1 = (props) => {
         >
           <Form.Item
             label="Team Name"
-            name="teamname"
+            name="teamName"
             rules={[
               { required: true, message: "Please input your Team Name!" },
               { validator: validateTeamName }
             ]}
-            initialValue={props.stepData.teamname ?? ""}
+            initialValue={props.stepData.teamName ?? ""}
           >
             <Input />
           </Form.Item>
