@@ -75,7 +75,7 @@ function TicketPopup({
                 (
                     <>
                         <h1 className="text-center font-bold text-2xl md:text-4xl mb-[2em] mt-[3em] text-white px-4">
-                            You have successfully registered {isTeam ? "for the Mini Hackathon 2024" : "for the Awareness Session"}! <br></br>Here's your
+                            You have successfully registered {isTeam ? "for the Mini Hackathon 2025" : "for the Awareness Session"}! <br></br>Here's your
                             ticket. Share everywhere!
                         </h1>
                         <h2 className="text-md text-white mb-[1em]">
@@ -90,7 +90,7 @@ function TicketPopup({
                 {isTeam ?
                     <TeamTicket
                         headerImage={"/assets/ms_club_logo.png"}
-                        title="Mini Hackathon 2024"
+                        title="Mini Hackathon 2025"
                         subTitle="Team Registration 📣"
                         date={new Date()}
                         ticketNo={ticketNo}
@@ -103,7 +103,7 @@ function TicketPopup({
                     <Ticket
                         headerImage={"/assets/ms_club_logo.png"}
                         headerImage2={"/assets/fcsc_logo.png"}
-                        title="Mini Hackathon 2024"
+                        title="Mini Hackathon 2025"
                         subTitle="Awareness Session 📣"
                         date={moment("2022-07-30 19:00")}
                         ticketNo={ticketNo}
@@ -115,7 +115,7 @@ function TicketPopup({
                     />
                 }
             </div>
-            {/* <Share url={getShareURL(ticketNo)} title="I got registered for the Mini Hackathon 2024!" /> */}
+            {/* <Share url={getShareURL(ticketNo)} title="I got registered for the Mini Hackathon 2025!" /> */}
             <div className="mt-5">
                 <button
                     onClick={saveTicket}
