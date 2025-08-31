@@ -1,12 +1,12 @@
-"use client";
-import { useState, useEffect } from "react";
+'use client';
+import { useState, useEffect } from 'react';
 
-export default function Timer() {
-  const targetDate = new Date("2025-09-01T17:00:00");
+export default function Timer({ targetDate }) {
+  const parsedTargetDate = new Date(targetDate);
 
   const calculateTimeLeft = () => {
     const now = new Date();
-    const difference = targetDate - now;
+    const difference = parsedTargetDate - now;
 
     let timeLeft = {};
 
@@ -32,7 +32,6 @@ export default function Timer() {
   const [timeLeft, setTimeLeft] = useState({});
 
   useEffect(() => {
-    // Calculate initial time left on client side only
     setTimeLeft(calculateTimeLeft());
 
     const timer = setInterval(() => {
@@ -46,83 +45,131 @@ export default function Timer() {
 
   const { days = 0, hours = 0, minutes = 0, seconds = 0 } = timeLeft;
 
-  const createCircle = (value, max, label) => {
-    const radius = 45;
-    const circumference = 2 * Math.PI * radius;
-    const strokeDasharray = circumference;
-    const strokeDashoffset = (1 - value / max) * circumference;
+  const circleColors = {
+    Days: '#22c55e',
+    Hours: '#ef4444',
+    Mins: '#fbbf24',
+    Sec: '#3b82f6',
+  };
 
+  const createCircle = (value, max, label) => {
+    const radius = 38;
+    const mdRadius = 50;
+    const lgRadius = 70;
+
+    const color = circleColors[label];
     return (
-      <div className="flex flex-col items-center group">
-        {/* Timer Circle Container - Better Mobile Sizing */}
-        <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 p-3 sm:p-4 bg-white/30 backdrop-blur-md rounded-2xl sm:rounded-3xl border border-white/40 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-white/40">
-          
-          {/* Progress Ring */}
-          <svg className="w-full h-full transform -rotate-90">
-            {/* Background Circle */}
+      <div className='flex flex-col items-center overflow-visible'>
+        {/* Mobile */}
+        <div className='relative w-24 h-24 sm:hidden overflow-visible'>
+          <svg className='w-full h-full' viewBox='-7 -7 94 94'>
             <circle
-              cx="50%"
-              cy="50%"
-              r={`${radius}%`}
-              stroke="rgba(0, 0, 0, 0.1)"
-              strokeWidth="8"
-              fill="none"
-              className="drop-shadow-sm"
+              cx='40'
+              cy='40'
+              r={radius}
+              stroke='#e5e7eb'
+              strokeWidth='7'
+              fill='none'
             />
-            {/* Progress Circle */}
             <circle
-              cx="50%"
-              cy="50%"
-              r={`${radius}%`}
-              stroke="#EF4A23"
-              strokeWidth="8"
-              strokeDasharray={strokeDasharray}
-              strokeDashoffset={strokeDashoffset}
-              fill="none"
-              strokeLinecap="round"
-              className="drop-shadow-md transition-all duration-500"
-              style={{
-                filter: 'drop-shadow(0 2px 4px rgba(239, 74, 35, 0.3))'
-              }}
+              cx='40'
+              cy='40'
+              r={radius}
+              stroke={color}
+              strokeWidth='7'
+              fill='none'
+              strokeDasharray={2 * Math.PI * radius}
+              strokeDashoffset={(1 - value / max) * 2 * Math.PI * radius}
+              strokeLinecap='round'
+              style={{ transition: 'stroke-dashoffset 0.5s' }}
             />
           </svg>
-          
-          {/* Value Display - Mobile Optimized */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-gray-900 transition-all duration-300 group-hover:scale-110">
+          <div className='absolute inset-0 flex flex-col items-center justify-center'>
+            <span className='text-xs font-semibold text-gray-500 mb-1'>
+              {label}
+            </span>
+            <span className='text-2xl font-extrabold text-gray-700'>
               {value.toString().padStart(2, '0')}
             </span>
           </div>
-
-          {/* Subtle Glow Effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#EF4A23]/5 via-transparent to-orange-400/5 rounded-2xl sm:rounded-3xl pointer-events-none"></div>
         </div>
-        
-        {/* Label - Mobile Optimized Typography */}
-        <div className="mt-1 xs:mt-2 sm:mt-3 text-center">
-          <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-gray-800 uppercase tracking-wide">
-            {label}
-          </span>
+        {/* Tablet */}
+        <div className='relative w-32 h-32 hidden sm:block md:hidden overflow-visible'>
+          <svg className='w-full h-full' viewBox='-8 -8 116 116'>
+            <circle
+              cx='50'
+              cy='50'
+              r={mdRadius}
+              stroke='#e5e7eb'
+              strokeWidth='8'
+              fill='none'
+            />
+            <circle
+              cx='50'
+              cy='50'
+              r={mdRadius}
+              stroke={color}
+              strokeWidth='8'
+              fill='none'
+              strokeDasharray={2 * Math.PI * mdRadius}
+              strokeDashoffset={(1 - value / max) * 2 * Math.PI * mdRadius}
+              strokeLinecap='round'
+              style={{ transition: 'stroke-dashoffset 0.5s' }}
+            />
+          </svg>
+          <div className='absolute inset-0 flex flex-col items-center justify-center'>
+            <span className='text-base font-semibold text-gray-500 mb-1'>
+              {label}
+            </span>
+            <span className='text-3xl font-extrabold text-gray-700'>
+              {value.toString().padStart(2, '0')}
+            </span>
+          </div>
+        </div>
+        {/* Desktop */}
+        <div className='relative w-40 h-40 hidden md:block overflow-visible'>
+          <svg className='w-full h-full' viewBox='-10 -10 160 160'>
+            <circle
+              cx='70'
+              cy='70'
+              r={lgRadius}
+              stroke='#e5e7eb'
+              strokeWidth='10'
+              fill='none'
+            />
+            <circle
+              cx='70'
+              cy='70'
+              r={lgRadius}
+              stroke={color}
+              strokeWidth='10'
+              fill='none'
+              strokeDasharray={2 * Math.PI * lgRadius}
+              strokeDashoffset={(1 - value / max) * 2 * Math.PI * lgRadius}
+              strokeLinecap='round'
+              style={{ transition: 'stroke-dashoffset 0.5s' }}
+            />
+          </svg>
+          <div className='absolute inset-0 flex flex-col items-center justify-center'>
+            <span className='text-xl font-semibold text-gray-500 mb-2'>
+              {label}
+            </span>
+            <span className='text-5xl font-extrabold text-gray-700'>
+              {value.toString().padStart(2, '0')}
+            </span>
+          </div>
         </div>
       </div>
     );
   };
 
   return (
-    <div className="w-full">
-      {/* Timer Grid - Mobile Responsive Layout */}
-      <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10 max-w-5xl mx-auto">
-        {createCircle(days, 365, "Days")}
-        {createCircle(hours, 24, "Hours")}
-        {createCircle(minutes, 60, "Minutes")}
-        {createCircle(seconds, 60, "Seconds")}
-      </div>
-
-      {/* Additional Info Row for Mobile */}
-      <div className="mt-6 sm:mt-8 text-center">
-        <p className="text-xs sm:text-sm text-gray-600 font-medium">
-          Until the awareness session begins
-        </p>
+    <div className='w-full flex flex-col items-center'>
+      <div className='flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 mt-2 w-full'>
+        {createCircle(days, 60, 'Days')}
+        {createCircle(hours, 60, 'Hours')}
+        {createCircle(minutes, 60, 'Mins')}
+        {createCircle(seconds, 60, 'Sec')}
       </div>
     </div>
   );
