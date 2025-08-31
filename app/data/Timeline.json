@@ -17,15 +17,15 @@
   },
   {
     "index": 3,
-    "date": "30th of July - 10.00 AM",
-    "title": "Team Registration Open",
+    "date": "28th of September",
+    "title": "Knowledge Sharing Session",
     "position": "right",
-    "description": "Registrations for round one start. Get your team registered on time by submitting an entry. Make sure that your team consist of 3 to 4 members. Keep in mind that a good team will help you win championships.",
+    "description": "A knowledge sharing session will be conducted by MSA to provide participants with insights and information that can help them in their projects. This session aims to enhance the understanding of the competition's theme and objectives.",
     "color": "#F59E0B"
   },
   {
     "index": 4,
-    "date": "12th of August - 10.00 AM",
+    "date": "30th of September",
     "title": "Registration Closes",
     "position": "left",
     "description": "Team registration closes on this day. Please note that NO registration is accepted after the registrations are closed. Be sure to get registered before the deadline ends.",
@@ -33,15 +33,15 @@
   },
   {
     "index": 5,
-    "date": "21th of August - 10.00 AM",
+    "date": "13th of October - 10.00 AM",
     "title": "Round 2 - Live Presentation",
     "position": "right",
-    "description": "Team registration closes on this day. Please note that NO registration is accepted after the registrations are closed. Be sure to get registered before the deadline ends.",
+    "description": "All teams that have successfully submitted their projects for round 2 will be required to present their projects live to a panel of judges. This presentation will allow the judges to assess the projects in more detail and ask any relevant questions.",
     "color": "#10B981"
   },
   {
     "index": 6,
-    "date": "25th of August - 10.00 AM",
+    "date": "21th of October",
     "title": "Final Round",
     "position": "left",
     "description": "All teams advancing to round 3 are invited to the physical event at the Sri Lanka Institute of Information Technology Campus, Malabe, to present the project in front of an expert panel. Winners will be selected accordingly.",
