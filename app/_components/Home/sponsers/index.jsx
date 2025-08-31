@@ -18,17 +18,18 @@ const Sponsors = () => {
 
   // Map legacy categories to new partner types and colors
   const categoryMap = {
-    'Platinum Sponsors': { label: 'Platinum Partner', color: 'bg-orange-400' },
-    'Knowledge Partners': { label: 'Knowledge Partner', color: 'bg-blue-500' },
-    'Beverage Partners': { label: 'Beverage Partner', color: 'bg-green-500' },
+    'Platinum Sponsors': { label: 'Platinum Partner', color: '#E67700E8' },
+    'Knowledge Partners': { label: 'Knowledge Partner', color: '#3B82F6' },
+    'Beverage Partners': { label: 'Beverage Partner', color: '#219C73' },
+    'Media Partners': { label: 'Media Partner', color: '#6A6970' }, 
     // Add more mappings as needed
   };
 
   // For backward compatibility, map Gold/Silver/Bronze to Platinum/Knowledge/Beverage
   const legacyMap = {
-    'Gold Sponsors': { label: 'Platinum Partner', color: 'bg-orange-400' },
-    'Silver Sponsors': { label: 'Knowledge Partner', color: 'bg-blue-500' },
-    'Bronze Sponsors': { label: 'Beverage Partner', color: 'bg-green-500' },
+    'Gold Sponsors': { label: 'Platinum Partner', color: '#E67700E8' },
+    'Silver Sponsors': { label: 'Knowledge Partner', color: '#3B82F6' },
+    'Bronze Sponsors': { label: 'Beverage Partner', color: '#219C73' },
   };
 
   // Merge both maps
@@ -38,7 +39,8 @@ const Sponsors = () => {
   const allSponsors = Object.entries(sponsorData).flatMap(([categoryName, sponsors]) =>
     sponsors.map(sponsor => ({
       ...sponsor,
-      category: mergedCategoryMap[categoryName]?.label || categoryName
+      category: mergedCategoryMap[categoryName]?.label || categoryName,
+      color: mergedCategoryMap[categoryName]?.color || undefined
     }))
   );
 
@@ -57,15 +59,15 @@ const Sponsors = () => {
   const getPackageColor = (category) => {
     const categoryLower = category.toLowerCase();
     if (categoryLower.includes('platinum') || categoryLower.includes('gold')) {
-      return 'bg-orange-400';
+      return '#E67700E8';
     } else if (categoryLower.includes('knowledge') || categoryLower.includes('blue')) {
-      return 'bg-blue-500';
+      return '#3B82F6';
     } else if (categoryLower.includes('beverage') || categoryLower.includes('green')) {
-      return 'bg-green-500';
+      return '#219C73';
     } else if (categoryLower.includes('media') || categoryLower.includes('gray')) {
-      return 'bg-gray-500';
+      return '#6A6970';
     }
-    return 'bg-blue-500'; // Default
+    return '#3B82F6'; // Default
   };
 
   // Duplicated sponsors for seamless scroll (declared below if needed)
@@ -106,18 +108,19 @@ const Sponsors = () => {
               >
                 {/* Partner badge at top middle, overlapping border */}
                 <div
-                  className={`absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-white text-xs font-semibold shadow`}
+                  className={`absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-3 rounded-full text-white text-xs font-semibold shadow`}
                   style={{
                     minWidth: '150px',
                     textAlign: 'center',
                     zIndex: 10,
-                    backgroundColor: sponsor.color ? sponsor.color : undefined
+                    backgroundColor: sponsor.color || getPackageColor(sponsor.category),
                   }}
                 >
-                  {!sponsor.color && (
+                  {sponsor.category}
+                  {/* {!sponsor.color && (
                     <span className={getPackageColor(sponsor.category)} style={{ position: 'absolute', inset: 0, borderRadius: '9999px', zIndex: -1 }}></span>
                   )}
-                  {sponsor.category}
+                  {sponsor.category} */}
                 </div>
                 <div className="flex-1 flex flex-col justify-center items-center mt-4 w-full">
                   {/* Fixed height image container for alignment */}

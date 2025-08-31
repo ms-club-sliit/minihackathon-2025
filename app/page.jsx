@@ -12,9 +12,9 @@ export default function Home() {
       <Hero />
       <CountdownTimer />
       <Eligibility />
-      <Sponsor />
       <Timeline />
       <Gallery />
+      <Sponsor />
       <PastWinnersList />
     </main>
   );
