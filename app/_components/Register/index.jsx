@@ -420,6 +420,17 @@ const Register = () => {
 
  return (
     <main className=''>
+          {/* Hero Image (Right-Aligned Background, Full Height) */}
+    <div className="absolute top-0 right-0 h-full w-[50%] lg:w-[38%] opacity-30 z-0">
+      <div className="relative h-full flex justify-end items-end">
+        <Image
+          src={HackathonImage}
+          alt="Hackathon Elements"
+          className="h-full w-auto object-contain drop-shadow-2xl"
+          style={{ height: "130%", width: "auto" }} // Increased size
+        />
+      </div>
+    </div>
       {showSpinner ? (
         <div className='flex justify-center items-center h-screen'>
           <Spin size='large' />
