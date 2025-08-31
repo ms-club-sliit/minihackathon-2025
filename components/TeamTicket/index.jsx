@@ -4,6 +4,12 @@ import { useEffect } from 'react';
 import { forwardRef } from 'react';
 import { useImperativeHandle } from 'react';
 import { useDisplaySize, usePerspectiveOnMouseMoveEffect } from '../../hooks';
+import {
+  getTicketImageOptions,
+  convertImageToBase64,
+  SF_PRO_DISPLAY_FONTS,
+  TEAM_TICKET_STYLES,
+} from '../../utils/ticketImageUtils';
 
 /**
  *
@@ -45,37 +51,27 @@ const TeamTicket = (props, this_ref) => {
 
   usePerspectiveOnMouseMoveEffect(ref);
 
-  // Function to convert image URL to base64
-  const getImageAsBase64 = async url => {
-    try {
-      const response = await fetch(url);
-      const blob = await response.blob();
-      return new Promise(resolve => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result);
-        reader.readAsDataURL(blob);
-      });
-    } catch (error) {
-      console.error(`Error loading image ${url}:`, error);
-      return url; // fallback to original URL
-    }
-  };
+  // Function to convert image URL to base64 - using utility
+  const getImageAsBase64 = convertImageToBase64;
 
   // Load base64 images on component mount
   useEffect(() => {
     const loadImages = async () => {
       try {
         console.log('Loading images for ticket...');
-        const [logoLight, msClubLogo, fcscLogo] = await Promise.all([
-          getImageAsBase64('/assets/logo-light.png'),
-          getImageAsBase64('/assets/ms_club_logo.png'),
-          getImageAsBase64('/assets/fcsc_logo.webp'),
-        ]);
+        const [logoLight, msClubLogo, fcscLogo, backgroundSvg] =
+          await Promise.all([
+            getImageAsBase64('/assets/logo-light.png'),
+            getImageAsBase64('/assets/ms_club_logo.png'),
+            getImageAsBase64('/assets/fcsc_logo.webp'),
+            getImageAsBase64('/assets/teamcard/bg.svg'),
+          ]);
 
         setBase64Images({
           logoLight,
           msClubLogo,
           fcscLogo,
+          backgroundSvg,
         });
         console.log('Images loaded successfully');
         setImagesLoaded(true);
@@ -86,6 +82,7 @@ const TeamTicket = (props, this_ref) => {
           logoLight: '/assets/logo-light.png',
           msClubLogo: '/assets/ms_club_logo.png',
           fcscLogo: '/assets/fcsc_logo.webp',
+          backgroundSvg: '/assets/teamcard/bg.svg',
         });
         setImagesLoaded(true);
       }
@@ -99,26 +96,18 @@ const TeamTicket = (props, this_ref) => {
         return Promise.reject('Ticket not ready - images not loaded');
       }
 
-      ref.current.style.transform = 'none';
-      return toPng(htmlRef.current, {
-        cacheBust: true,
-        pixelRatio: 2,
-        useCORS: true,
-      });
+      return toPng(htmlRef.current, getTicketImageOptions(727, 400));
     },
   }));
 
   useEffect(() => {
     if (onRender && ref.current && imagesLoaded) {
       console.log('Starting ticket render with loaded images...');
-      // Longer delay to ensure images are fully rendered
+      // Longer delay to ensure images and fonts are fully rendered, especially on production
+      const delay = process.env.NODE_ENV === 'production' ? 2000 : 1000;
       setTimeout(() => {
         ref.current.style.transform = 'none';
-        toPng(ref.current, {
-          cacheBust: true,
-          pixelRatio: 2, // Higher quality
-          useCORS: true, // Allow cross-origin images
-        })
+        toPng(ref.current, getTicketImageOptions(727, 400))
           .then(dataUrl => {
             console.log('Ticket rendered successfully');
             ref.current.style.transform = 'none';
@@ -127,7 +116,7 @@ const TeamTicket = (props, this_ref) => {
           .catch(err => {
             console.error('Ticket render error:', err);
           });
-      }, 1000); // Increased delay
+      }, delay); // Increased delay for production
     }
   }, [ref, isDebugModeOn, onRender, imagesLoaded]);
 
@@ -173,8 +162,12 @@ const TeamTicket = (props, this_ref) => {
     );
   }
 
+  // Inline styles for ticket to ensure they work in html-to-image conversion
+  const inlineStyles = TEAM_TICKET_STYLES;
+
   return (
     <div>
+      <style dangerouslySetInnerHTML={{ __html: SF_PRO_DISPLAY_FONTS }} />
       <svg width={size === 0 ? 390 : 727} viewBox='0 0 727 400' ref={ref}>
         <foreignObject
           width={727}
@@ -183,13 +176,23 @@ const TeamTicket = (props, this_ref) => {
         >
           <div
             ref={htmlRef}
-            className='flex flex-row w-full h-full border-black border-[4px] rounded-[30px] ticket-team-bg bg-white'
+            className='flex flex-row w-full h-full border-black border-[4px] rounded-[30px] bg-white'
+            style={{
+              backgroundImage: `url(${
+                base64Images.backgroundSvg || '/assets/teamcard/bg.svg'
+              })`,
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+            }}
           >
             <div className='h-full flex-grow pl-[54px] py-[51px]'>
               <div className='flex flex-row h-full justify-center items-center'>
                 <div className='h-full max-w-[275px] mr-[30px]'>
                   <div className='flex flex-row items-center mb-[30px]'>
-                    <div className='ticket-team-name line-clamp-2'>
+                    <div
+                      className='line-clamp-2'
+                      style={inlineStyles.ticketTeamName}
+                    >
                       {props.team && props.team.team_name}
                     </div>
                   </div>
@@ -206,7 +209,10 @@ const TeamTicket = (props, this_ref) => {
                             {member.name?.[0].toUpperCase()}
                           </div>
                         </div>
-                        <div className='ticket-team-member line-clamp-2'>
+                        <div
+                          className='line-clamp-2'
+                          style={inlineStyles.ticketTeamMember}
+                        >
                           {member.name}
                         </div>
                       </div>
@@ -220,15 +226,26 @@ const TeamTicket = (props, this_ref) => {
                     alt='Mini hackathon logo'
                     className='mb-[8px]'
                   />
-                  <div className='ticket-team-round mb-[28px]'>1st Round</div>
-                  <div className='ticket-team-date mb-[6px]'>
+                  <div
+                    className='mb-[28px]'
+                    style={inlineStyles.ticketTeamRound}
+                  >
+                    1st Round
+                  </div>
+                  <div className='mb-[6px]' style={inlineStyles.ticketTeamDate}>
                     {getCurrentDateString()}
                   </div>
-                  <div className='ticket-team-time mb-[16px]'>
+                  <div
+                    className='mb-[16px]'
+                    style={inlineStyles.ticketTeamTime}
+                  >
                     {getCurrentTimeString()}
                   </div>
                   <div className='w-[183px] h-[70px] flex-row justify-center'>
-                    <div className='team-hosted-by whitespace-nowrap mr-[8px] text-sm mb-2'>
+                    <div
+                      className='whitespace-nowrap mr-[8px] text-sm mb-2'
+                      style={inlineStyles.teamHostedBy}
+                    >
                       Hosted by
                     </div>
                     <div className='flex justify-center'>
@@ -249,8 +266,11 @@ const TeamTicket = (props, this_ref) => {
                 </div>
               </div>
             </div>
-            <div className='team-dashed-line h-full'></div>
-            <div className='w-[101px] team-number flex justify-center items-center'>
+            <div style={inlineStyles.teamDashedLine}></div>
+            <div
+              className='w-[101px] flex justify-center items-center'
+              style={inlineStyles.teamNumber}
+            >
               #{String(props.ticketNo).padStart(4, '0')}
             </div>
           </div>
