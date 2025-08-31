@@ -1,7 +1,7 @@
 [
   {
     "title": "SPONSOR",
-    "content": "These are the Official Rules (\"Rules\") that govern how the Mini hackathon 2024 competition operates (the \"Competition\"). MS Club of SLIIT, Faculty of Computing, Sri Lanka institute of Information technology is the competition sponsor (\"Sponsor\")."
+    "content": "These are the Official Rules (\"Rules\") that govern how the Mini hackathon 2025 competition operates (the \"Competition\"). MS Club of SLIIT, Faculty of Computing, Sri Lanka institute of Information technology is the competition sponsor (\"Sponsor\")."
   },
   {
     "title": "DEFINITIONS",
@@ -13,7 +13,7 @@
   },
   {
     "title": "ENTRY PERIOD",
-    "content": "The entry period for the competition starts at 00.01 Colombo Local Time(GMT+5.30) on 16th August 2024 and ends on 25th August 2024 (\"Entry period\"). Following the entry, selected teams will advance to the preceding rounds.",
+    "content": "The entry period for the competition starts at 00.01 Colombo Local Time(GMT+5.30) on 01st September 2025 and ends on 30th September 2025 (\"Entry period\"). Following the entry, selected teams will advance to the preceding rounds.",
     "table": {
       "head": [
         "Round",
@@ -25,20 +25,20 @@
         [
           "Round 1",
           "Virtual",
-          "16th August 2024",
-          "25th August 2024"
+          "30th September 2025",
+          "04th October 2025"
         ],
         [
           "Round 2",
           "Virtual",
-          "13th September 2024",
-          "16th September 2024"
+          "05th October 2025",
+          "13th October 2025"
         ],
         [
           "Round 3",
-          "Virtual",
-          "27th September 2024",
-          "27th September 2024"
+          "Physical",
+          "17th October 2025",
+          "21th October 2025"
         ]
       ]
     },
@@ -48,7 +48,7 @@
     "title": "ELIGIBILITY",
     "content": "You are eligible to enter if you meet the following requirements below at the time of entry. For purposes of this Competition, \"time of entry\" is defined as the most recent date you have submitted an entry into a specific round.",
     "list": [
-      "You are at least 16 years of age as of 16th August 2024 and are actively enrolled as a student following an undergraduate degree program at Srilanka Institute of Information Technology.",
+      "You are at least 16 years of age as of 16th August 2025 and are actively enrolled as a student following an undergraduate degree program at Srilanka Institute of Information Technology.",
       "You have not used paid employee's assistance in creating the mini hackathon entry deliverables.",
       "You are not actively enrolled in any administration role of this competition.",
       "You have not utilized any other competitors IPOs without their permission.",
@@ -287,17 +287,17 @@
     "prizes": [
       {
         "place": "3rd place",
-        "description": "The team that is placed 3rd at the Minihackathon 2024 competition will be provided with,",
+        "description": "The team that is placed 3rd at the Minihackathon 2025 competition will be provided with,",
         "reward": " Cash Prize: 15,000 LKR"
       },
       {
         "place": "2nd place",
-        "description": "The team that is placed 2nd at the Minihackathon 2024 competition will be provided with,",
+        "description": "The team that is placed 2nd at the Minihackathon 2025 competition will be provided with,",
         "reward": " Cash Prize: 20,000 LKR"
       },
       {
         "place": "1st place",
-        "description": "The team that is placed 1st at the Minihackathon 2024 competition will be provided with,",
+        "description": "The team that is placed 1st at the Minihackathon 2025 competition will be provided with,",
         "reward": " Cash Prize: 30,000 LKR"
       }
     ]
