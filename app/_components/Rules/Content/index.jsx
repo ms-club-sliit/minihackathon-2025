@@ -162,13 +162,14 @@ export default function Content() {
                       <p key={`content-${rIndex}-${cIndex}`} className="mb-2">{contentItem}</p>
                     ))}
 
-                    {round.categories && <CategoryList categories={round.categories} />}
                     {round.list && (
                       <ul className="list-disc text-[#334155] text-base lg:text-lg pl-10 lg:pl-20 my-5">
                         {round.list.map((listItem, lIndex) => <li key={`list-item-${rIndex}-${lIndex}`}>{listItem}</li>)}
                       </ul>
                     )}
 
+                    {round.categories && <CategoryList categories={round.categories} />}
+                    
                     {round.advancement && (
                       <>
                         <h4 className="mt-10 font-bold">{round.advancement.title}</h4>

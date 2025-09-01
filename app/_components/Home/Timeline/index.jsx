@@ -132,7 +132,7 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
 
 export default function Timeline() {
   return (
-    <main className="relative isolate bg-white min-h-screen py-12 overflow-hidden">
+    <main id="timeline" className="relative isolate bg-white min-h-screen py-12 overflow-hidden">
       {/* Decorative corner UI elements */}
       <DecorativeCorners />
 
