@@ -13,7 +13,7 @@
   "Knowledge Partner": [
     {
       "id": 2,
-      "src": "/images/logos/MSLogo.png",
+      "src": "/images/logos/MLSALogo.png",
       "alt": "MSA",
       "name": "MSA",
       "description": "Microsoft Student Ambassadors",
@@ -21,21 +21,11 @@
       "height": 120
     }
   ],
-  "Beverage Partner": [
-    {
-      "id": 3,
-      "src": "/images/home/sponsors/1.png",
-      "alt": "SMAK",
-      "name": "SMAK",
-      "description": "",
-      "width": 200,
-      "height": 120
-    }
-  ],
+  
   "Media Partner": [
     {
       "id": 4,
-      "src": "/images/logos/FCSCLogo.png",
+      "src": "/images/logos/MediaClubLogo 1.png",
       "alt": "Media",
       "name": "Media",
       "color": "#eb0000",
