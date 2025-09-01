@@ -74,6 +74,49 @@ export default function Content() {
     </div>
   );
 
+  const CategoryList = ({ categories }) => {
+    // Group categories by their main category
+    const groupedCategories = categories.reduce((acc, category) => {
+      const mainCategory = category.category || 'Other';
+      if (!acc[mainCategory]) {
+        acc[mainCategory] = [];
+      }
+      acc[mainCategory].push(category);
+      return acc;
+    }, {});
+
+    return (
+      <div className="space-y-6">
+        {Object.entries(groupedCategories).map(([mainCategory, categoryItems]) => (
+          <div key={mainCategory}>
+            {/* Main Category Header */}
+            <h2 className="text-2xl font-bold mb-4 text-left">
+              {mainCategory}
+            </h2>
+            
+            {/* Category Items */}
+            <div className="space-y-6">
+              {categoryItems.map((category, index) => (
+                <div key={`${mainCategory}-${index}`} className="bg-white shadow-md rounded-lg p-6">
+                  <h2 className="text-xl font-bold mb-4 text-left">
+                    {index + 1}. {category.name}
+                  </h2>
+                  <ul className="list-disc pl-5 space-y-2 text-left">
+                    {category.content.map((item, itemIndex) => (
+                      <li key={`item-${mainCategory}-${index}-${itemIndex}`} className="text-gray-700 text-base">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="w-screen relative">
       {/* Decorative corner images like Timeline */}
@@ -85,33 +128,79 @@ export default function Content() {
       </div>
 
       <div className="container mx-auto text-justify text-[#161414] px-6 md:px-12 lg:px-20">
-  {sections && Array.isArray(sections) ? (
-    sections.map((section, index) => (
-      <div key={`round-${section.title}-${index}`} className="my-10">
-        <h3 className="text-lg lg:text-2xl font-bold text-center lg:text-left uppercase mb-5">
-          {section.title}
-        </h3>
-        {section.content && (
-          <p className="text-[#334155] text-base lg:text-lg my-5">
-            {section.content}
-          </p>
-        )}
-        {section.table && <Table head={section.table.head} body={section.table.body} />}
-        {section.nestedTable && <NestedTable head={section.nestedTable.head} body={section.nestedTable.body} />}
-        {section.list && (
-          <ul className="list-disc text-[#334155] text-base lg:text-lg my-5 pl-5 lg:pl-10">
-            {section.list.map((item, index) => <li key={index}>{item}</li>)}
-          </ul>
-        )}
-        {section.note && <p className="text-base lg:text-lg text-[#334155] font-semibold my-10 italic">{section.note}</p>}
-        {section.content2 && <p className="text-[#334155] text-base lg:text-lg my-5">{section.content2}</p>}
-      </div>
-    ))
-  ) : (
-    <h1 className="text-2xl text-center mt-10 font-semibold">No sections available</h1>
-  )}
-</div>
+        {sections && Array.isArray(sections) ? (
+          sections.map((section, index) => (
+            <div key={`round-${section.title}-${index}`} className="my-10">
+              <h3 className="text-lg lg:text-2xl font-bold text-center lg:text-left uppercase mb-5">
+                {section.title}
+              </h3>
 
+              {section.content && (
+                <p className="text-[#334155] text-base lg:text-lg my-5">
+                  {section.content}
+                </p>
+              )}
+
+              {section.table && <Table head={section.table.head} body={section.table.body} />}
+              {section.nestedTable && <NestedTable head={section.nestedTable.head} body={section.nestedTable.body} />}
+              {section.list && (
+                <ul className="list-disc text-[#334155] text-base lg:text-lg my-5 pl-5 lg:pl-10">
+                  {section.list.map((item, index) => <li key={index}>{item}</li>)}
+                </ul>
+              )}
+              {section.note && <p className="text-base lg:text-lg text-[#334155] font-semibold my-10 italic">{section.note}</p>}
+              {section.content2 && <p className="text-[#334155] text-base lg:text-lg my-5">{section.content2}</p>}
+
+              {/* Added rounds */}
+              {section.rounds && section.rounds.map((round, rIndex) => (
+                <div key={`round-${rIndex}`} className="my-10">
+                  <h3 className="text-xl lg:text-2xl font-bold my-5 text-center lg:text-left lg:pl-20">
+                    {round.title}
+                  </h3>
+                  <div className="text-[#334155] text-base lg:text-lg lg:pl-20 mx-10 lg:mx-0">
+                    {round.content.map((contentItem, cIndex) => (
+                      <p key={`content-${rIndex}-${cIndex}`} className="mb-2">{contentItem}</p>
+                    ))}
+
+                    {round.categories && <CategoryList categories={round.categories} />}
+                    {round.list && (
+                      <ul className="list-disc text-[#334155] text-base lg:text-lg pl-10 lg:pl-20 my-5">
+                        {round.list.map((listItem, lIndex) => <li key={`list-item-${rIndex}-${lIndex}`}>{listItem}</li>)}
+                      </ul>
+                    )}
+
+                    {round.advancement && (
+                      <>
+                        <h4 className="mt-10 font-bold">{round.advancement.title}</h4>
+                        <p>{round.advancement.content}</p>
+                        {round.advancement.note && (
+                          <p className="font-semibold my-10 italic">{round.advancement.note}</p>
+                        )}
+                      </>
+                    )}
+
+                    {round.content2 && <p className="mb-2">{round.content2}</p>}
+                  </div>
+                </div>
+              ))}
+
+              {/* Added prizes */}
+              {section.prizes && section.prizes.map((prize, pIndex) => (
+                <div key={`prize-${pIndex}`} className="text-base lg:text-lg text-[#334155] lg:pl-20 mx-10 lg:mx-0">
+                  <p>
+                    <span className="font-semibold">{prize.place}</span>:
+                    <span>{prize.description}</span>{' '}
+                    <span className="font-semibold">{prize.reward}</span>
+                  </p>
+                </div>
+              ))}
+
+            </div>
+          ))
+        ) : (
+          <h1 className="text-2xl text-center mt-10 font-semibold">No sections available</h1>
+        )}
+      </div>
     </div>
   );
 }
