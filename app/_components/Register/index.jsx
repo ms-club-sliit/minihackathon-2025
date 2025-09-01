@@ -477,7 +477,7 @@ const Register = () => {
   }, []);
 
   function generateTicketID() {
-    const prefix = 'MS24';
+    const prefix = 'MS25';
     const randomComponent = Math.floor(Math.random() * 1000000); // Random number between 0 and 999999
     const paddedNumber = randomComponent.toString().padStart(5, '0'); // Ensure it is always 5 digits
     return `${prefix}${paddedNumber}`;

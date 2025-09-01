@@ -200,7 +200,7 @@ html,body, #root {
 }
 
 .ticket-team-bg {
-	background-image: url("/assets/teamcard/bg.svg");
+	background-image: url("/assets/teamcard/ticket-bg.png");
 	background-repeat: no-repeat;
 	background-position: center;
 }
