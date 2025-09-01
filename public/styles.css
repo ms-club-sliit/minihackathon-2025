@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .countdownTimer {
   position: relative;
   width: 100%;
@@ -200,7 +196,7 @@ html,body, #root {
 }
 
 .ticket-team-bg {
-	background-image: url("/assets/teamcard/bg.svg");
+	background-image: url("../public/assets/teamcard/bg.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 }

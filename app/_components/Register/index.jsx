@@ -143,6 +143,22 @@ const Register = () => {
 
   const [showTicket, setShowTicket] = useState(false);
   const [isTicketLoading, setIsTicketLoading] = useState(false);
+  const ticketRef = useRef(null);
+
+  // Effect to handle ticket generation when ticket popup is shown
+  useEffect(() => {
+    if (showTicket && ticketRef.current && !isTicketLoading) {
+      // Small delay to ensure the ticket component is fully rendered
+      setTimeout(async () => {
+        try {
+          await handleTicketGeneration(ticketRef);
+        } catch (error) {
+          console.error('Error generating ticket:', error);
+          setIsTicketLoading(false);
+        }
+      }, 1000);
+    }
+  }, [showTicket, isTicketLoading]);
   const [emailProgress, setEmailProgress] = useState({
     current: 0,
     total: 0,
@@ -247,6 +263,51 @@ const Register = () => {
     return blob;
   };
 
+  const saveTicketToSupabase = async popupRef => {
+    // Check if we already saved this ticket
+    if (saveTicketToSupabase.lastSavedTicket) {
+      console.log(
+        'Reusing existing ticket URL:',
+        saveTicketToSupabase.lastSavedTicket
+      );
+      return saveTicketToSupabase.lastSavedTicket;
+    }
+
+    try {
+      // Use renderTicket method through the popup ref instead of onRender
+      const dataURL = await popupRef.current.renderTicket();
+
+      let fileName = generateFileName();
+      const filePath = `ticket-images-2025/${fileName}`;
+      const blob = dataURItoBlob(dataURL);
+
+      const { data, error } = await supabase.storage
+        .from('uploads')
+        .upload(filePath, blob, {
+          cacheControl: '3600',
+          upsert: true,
+          contentType: 'image/jpeg',
+        });
+
+      if (error) {
+        console.error('Upload error:', error);
+        throw error;
+      }
+
+      const {
+        data: { publicUrl },
+      } = supabase.storage.from('uploads').getPublicUrl(filePath);
+
+      // Save the URL for reuse
+      saveTicketToSupabase.lastSavedTicket = publicUrl;
+      console.log('Uploaded successfully to:', publicUrl);
+      return publicUrl;
+    } catch (error) {
+      console.error('Error uploading ticket:', error);
+      throw error;
+    }
+  };
+
   const saveTicket = async image_string => {
     // Add a static variable to track if we've already saved this ticket
     if (saveTicket.lastSavedTicket) {
@@ -286,7 +347,7 @@ const Register = () => {
     }
   };
 
-  const onRender = async dataURL => {
+  const handleTicketGeneration = async popupRef => {
     // If already loading or ticket is already displayed, don't proceed
     if (isTicketLoading || ticketData.display) {
       return;
@@ -294,7 +355,8 @@ const Register = () => {
 
     setIsTicketLoading(true);
     try {
-      let url = await saveTicket(dataURL);
+      // Use renderTicket method through the popup ref to get image and upload to Supabase
+      let url = await saveTicketToSupabase(popupRef);
       const teamInfo = { ...addedDoc.current };
       let str = jsx2html(<EmailTemplate image={url} team={teamInfo} />);
 
@@ -459,7 +521,8 @@ const Register = () => {
           {showTicket && (
             <TicketPopup
               onClose={onClose}
-              onRender={onRender}
+              onRender={null} // Remove onRender, we'll use renderTicket instead
+              ref={ticketRef}
               {...ticketData}
             />
           )}

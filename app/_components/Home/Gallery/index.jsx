@@ -42,9 +42,13 @@ export default function Gallery() {
 
   return (
     <main>
-      <h1 id="gallery" className="text-3xl lg:text-5xl font-bold text-center">
-        Gallery
-      </h1>
+      <div className="flex items-center w-full justify-center">
+        <div className="hidden md:block w-1/4 h-0.5 bg-gray-200 mr-4" />
+        <div className="bg-gray-800 px-6 py-2 rounded-full shadow text-white text-xl sm:text-2xl font-semibold">
+          Gallery
+        </div>
+        <div className="hidden md:block w-1/4 h-0.5 bg-gray-200 ml-4" />
+      </div>
 
       <div className="gallery space-y-4 py-8 md:py-16 container block mx-auto overflow-x-hidden">
         <div className="flex overflow-x-hidden">
