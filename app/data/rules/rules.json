@@ -1,9 +1,5 @@
 [
   {
-    "title": "SPONSOR",
-    "content": "These are the Official Rules (\"Rules\") that govern how the Mini hackathon 2025 competition operates (the \"Competition\"). MS Club of SLIIT, Faculty of Computing, Sri Lanka institute of Information technology is the competition sponsor (\"Sponsor\")."
-  },
-  {
     "title": "DEFINITIONS",
     "content": "In these rules, \"MS Club of SLIIT\", \"We\", \"Our\" and \"Us\" refers to the competition sponsor, and \"You\" and \"Yourself\" refers to an eligible entrant."
   },
@@ -17,9 +13,9 @@
     "table": {
       "head": ["Round", "Mode", "Start Date", "End Date"],
       "body": [
-        ["Round 1", "Virtual", "01st September 2025", "30th September 2025"],
+        ["Round 1", "Virtual", "02nd September 2025", "30th September 2025"],  
         ["Round 2", "Virtual", "05th October 2025", "13th October 2025"],
-        ["Round 3", "Physical", "21th October 2025", "21th October 2025"]
+        ["Round 3", "Physical", "21st October 2025", "21st October 2025"]
       ]
     },
     "note": "Note: Above dates can be changed based on the situation."
@@ -28,7 +24,7 @@
     "title": "ELIGIBILITY",
     "content": "You are eligible to enter if you meet the following requirements below at the time of entry. For purposes of this Competition, \"time of entry\" is defined as the most recent date you have submitted an entry into a specific round.",
     "list": [
-      "You are at least 16 years of age as of 01st September 2025 and are actively enrolled as a student following an undergraduate degree program at Srilanka Institute of Information Technology.",
+      "You are at least 16 years of age as of 02nd September 2025 and are actively enrolled as a student following an undergraduate degree program at Sri Lanka Institute of Information Technology.",
       "You have not used paid employee's assistance in creating the mini hackathon entry deliverables.",
       "You are not actively enrolled in any administration role of this competition.",
       "You have not utilized any other competitors IPOs without their permission.",
@@ -251,7 +247,8 @@
           "Presentation Video: 5 min presentation (a demo video if required) presenting your solution.( PowerPoint or Google Slides can use for presentation slides ).",
           "Software (optional): Usable software if there is any.",
           "Software Instructions (optional): Instruction on how to use the software if there is one.",
-          "Prototype (optional): Adobe XD or Figma prototype created demonstrating the software"
+          "Prototype (optional): Adobe XD or Figma prototype created demonstrating the software.",
+          "Participants are required to select one topic from the list of 20 provided below for the Round 01. In the project proposal clearly mention the topic that you have choosen."
         ],
         "advancement": {
           "title": "Round 1 Advancement:",
@@ -280,7 +277,7 @@
       {
         "title": "Round 3 (Physical)",
         "content": [
-          "All teams advancing to round 3 will be invited to take part in the physical event at Srilanka Institute of Information Technology Campus , Malabe. The teams advancing will be presenting in front of an expert panel of judges. The criterions will be different in the final round.",
+          "All teams advancing to round 3 will be invited to take part in the physical event at Sri Lanka Institute of Information Technology Campus , Malabe. The teams advancing will be presenting in front of an expert panel of judges. The criterions will be different in the final round.",
           "The contestants cannot prepare any prior material and are required to provide the solution for a topic that is given at the day of the competition. The categories will be chosen randomly and the solutions must be innovative. After the topics are selected, the contestants will be given 5h to come up with an innovative solution and create the material required to present in front of an expert panel of judges."
         ],
         "list": [
@@ -366,7 +363,7 @@
     ]
   },
   {
-    "title": "Marking Criteria ( Round 2 and Final Round )",
+    "title": "Marking Criteria",
     "content": "The marking criteria for the competition is as follows.",
     "nestedTable": {
       "head": ["Criteria", "Description"],
@@ -412,7 +409,7 @@
         {
           "criteria": "Prototyping",
           "description": [
-            "Does the prototype thoroughly demonstrate the proposed solution and addresses the given criteria?"
+            "Does the prototype thoroughly demonstrate the proposed solution and addresses the given criteria? ( This is for Round 2 and Final Round )"
           ]
         }
       ]

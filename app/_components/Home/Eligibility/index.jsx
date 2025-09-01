@@ -2,7 +2,7 @@
 
 export default function Eligibility() {
   return (
-    <section className='w-full flex justify-center items-center py-8 sm:py-10 md:py-12 px-2'>
+    <section id="eligibility" className='w-full flex justify-center items-center py-8 sm:py-10 md:py-12 px-2'>
       <div className='w-full max-w-7xl bg-[#EFEFEF] rounded-[36px] sm:rounded-[48px] md:rounded-[64px] lg:rounded-[72px] px-2 sm:px-6 md:px-10 py-8 sm:py-12 md:py-16 flex flex-col items-center'>
         <h2
           className='text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#232B36] text-center mb-4 sm:mb-6 tracking-tight'
