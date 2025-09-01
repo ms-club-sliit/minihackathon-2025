@@ -205,12 +205,16 @@ const Step2 = (props) => {
                   </Button>
                 </Col>
                 <Col>
-                  <Button type="primary" htmlType="submit">
-                    Next
-                  </Button>
-                </Col>
-              </Row>
-            </Space>
+                  <Button type="primary"
+              htmlType="submit"
+              className="w-full"
+              style={{ backgroundColor: '#000000', borderColor: '#000000' }}
+            >
+              Next
+            </Button>
+          </Col>
+        </Row>
+      </Space>
           </Form.Item>
         </Form>
       </div>
