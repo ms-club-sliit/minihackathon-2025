@@ -60,9 +60,15 @@ const Step1 = (props) => {
           <Form.Item
             wrapperCol={{ span: 24 }}
           >
-            <Button type="primary" htmlType="submit" className="w-full">
-              Next
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="w-full"
+              style={{ backgroundColor: '#000000', borderColor: '#000000' }}
+            >
+            Next
             </Button>
+
           </Form.Item>
         </Form>
       </div>

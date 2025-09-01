@@ -131,34 +131,40 @@ const TeamTicket = (props, this_ref) => {
 										))}
 								</div>
 								<div className="flex-grow"></div>
-								<div className="flex flex-col justify-center items-center mr-[40px]">
+								{/* Fixed center section with better spacing and layout */}
+								<div className="flex flex-col justify-center items-center min-w-[220px] max-w-[280px] px-4">
 									<img
 										width={190}
 										src="/images/2025-images/logo-main-2025.png"
 										alt="Mini hackathon logo"
-										className="mb-[8px]"
+										className="mb-[12px]"
 									/>
-									<div className="ticket-team-round mb-[28px]">1st Round</div>
-									<div className="ticket-team-date mb-[6px]">
-										{getCurrentDateString()}
+									<div className="ticket-team-round mb-[25px] text-center">1st Round</div>
+									
+									{/* Fixed date/time layout with proper spacing */}
+									<div className="w-full text-center mb-[20px]">
+										<div className="ticket-team-date mb-[8px] leading-tight">
+											{getCurrentDateString()}
+										</div>
+										<div className="ticket-team-time leading-tight">
+											{getCurrentTimeString()}
+										</div>
 									</div>
-									<div className="ticket-team-time mb-[16px]">
-										{getCurrentTimeString()}
-									</div>
-									<div className="w-[183px] h-[70px] flex-row justify-center">
-										<div className="team-hosted-by whitespace-nowrap mr-[8px] text-sm mb-2">
+									
+									<div className="w-full flex flex-col items-center">
+										<div className="team-hosted-by whitespace-nowrap text-sm mb-2 text-center">
 											Hosted by
 										</div>
-										<div className="flex justify-center">
+										<div className="flex justify-center items-center gap-2">
 											<img
 												src="/assets/ms_club_logo.png"
-												alt="Mini hackathon logo"
-												className="h-[40px] object-contain"
+												alt="MS Club logo"
+												className="h-[35px] object-contain"
 											/>
 											<img
 												src="/assets/fcsc_logo.webp"
-												alt="Mini hackathon logo"
-												className="h-[40px] object-contain ml-2"
+												alt="FCSC logo"
+												className="h-[35px] object-contain"
 											/>
 										</div>
 									</div>

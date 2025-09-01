@@ -255,3 +255,25 @@ html,body, #root {
 	text-orientation: mixed;
 	transform: rotate(-180deg);
 }
+
+.ant-steps-item-title,
+.ant-steps-item-description {
+  color: #000 !important;
+}
+
+.ant-steps-item-icon {
+  color: #000 !important;
+}
+
+.ant-steps-item-active .ant-steps-item-icon {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.ant-steps-item-finish .ant-steps-item-icon {
+  color: #000 !important;
+}
+
+.ant-steps-item-finish .ant-steps-item-tail {
+  border-color: #000 !important;
+}
