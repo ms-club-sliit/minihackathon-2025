@@ -8,13 +8,13 @@
 
 ## [Figma Design](#figma-design)
 
-- [Mini Hackathon 2024 UI](https://www.figma.com/design/xoLgrOz0YNDy1BjaRNfAxR/MiniHackathon-UI?node-id=147-125&t=k0W1AvqI47x5XrHu-1)
+- [Mini Hackathon 2025 UI](https://www.figma.com/design/xcYqVzv6jpcN0JRdWPG8BM/Mini-Hackathon-25?node-id=396-28&t=GOpO2ojHllEdHDSw-1)
 
 ## [How to contribute](#how-to)
 
 1. Clone the project to your own machine.
 
-`git clone https://github.com/ms-club-sliit/minihackathon-2024.git`
+`git clone https://github.com/ms-club-sliit/minihackathon-2025.git`
 
 2. Checkout to the development branch.
 

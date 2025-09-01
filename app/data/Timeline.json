@@ -1,15 +1,15 @@
 [
   {
     "index": 1,
-    "date": "02th of September",
+    "date": "02nd of September",
     "title": "Registration Open",
     "position": "right",
-    "description": "Being aware of the competition will help you create a remarkable project adhering to the rules and guidelines of the competition. The best way to do so is by attending the awareness session. Now you can get registered for the awareness session.",
+    "description": "Being aware of the competition will help you create a remarkable project adhering to the rules and guidelines of the competition. The best way to do so is by attending the awareness session.",
     "color": "#EF4444"
   },
   {
     "index": 2,
-    "date": "02th of September - 7.00pm",
+    "date": "02nd of September - 7.00pm",
     "title": "Awareness Session",
     "position": "left",
     "description": "Join us for the awareness session to learn more about the competition and how to prepare for it.",
@@ -17,10 +17,10 @@
   },
   {
     "index": 3,
-    "date": "02th of September",
+    "date": "02nd of September",
     "title": "Team Registration Open",
     "position": "right",
-    "description": "Registrations for round one start. Get your team registered on time by submitting an entry. Make sure that your team consist of 3 to 4 members. Keep in mind that a good team will help you win championships.",
+    "description": "Registrations for Round One are now open! Get your team registered on time by submitting an entry. Each team must consist of 3 to 4 members. Remember, a strong team is the key to winning championships.",
     "color": "#F59E0B"
   },
   {
@@ -36,7 +36,7 @@
     "date": "13th of Octomber",
     "title": "Round 2 - Live Presentation",
     "position": "right",
-    "description": "Team registration closes on this day. Please note that NO registration is accepted after the registrations are closed. Be sure to get registered before the deadline ends.",
+    "description": "Teams that qualify for Round 2 will present their projects to the judges in a live format.",
     "color": "#10B981"
   },
   {
