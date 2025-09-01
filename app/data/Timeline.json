@@ -12,20 +12,20 @@
     "date": "02th of September - 7.00pm",
     "title": "Awareness Session",
     "position": "left",
-    "description": "Team registration closes on this day. Please note that NO registration is accepted after the registrations are closed. Be sure to get registered before the deadline ends.",
+    "description": "Join us for the awareness session to learn more about the competition and how to prepare for it.",
     "color": "#EF4444"
   },
   {
     "index": 3,
-    "date": "28th of September",
-    "title": "Knowledge Sharing Session",
+    "date": "02th of September",
+    "title": "Team Registration Open",
     "position": "right",
-    "description": "A knowledge sharing session will be conducted by MSA to provide participants with insights and information that can help them in their projects. This session aims to enhance the understanding of the competition's theme and objectives.",
+    "description": "Registrations for round one start. Get your team registered on time by submitting an entry. Make sure that your team consist of 3 to 4 members. Keep in mind that a good team will help you win championships.",
     "color": "#F59E0B"
   },
   {
     "index": 4,
-    "date": "30th of September",
+    "date": "30th of September - 10.00 AM",
     "title": "Registration Closes",
     "position": "left",
     "description": "Team registration closes on this day. Please note that NO registration is accepted after the registrations are closed. Be sure to get registered before the deadline ends.",
@@ -33,10 +33,10 @@
   },
   {
     "index": 5,
-    "date": "13th of October - 10.00 AM",
+    "date": "13th of Octomber",
     "title": "Round 2 - Live Presentation",
     "position": "right",
-    "description": "All teams that have successfully submitted their projects for round 2 will be required to present their projects live to a panel of judges. This presentation will allow the judges to assess the projects in more detail and ask any relevant questions.",
+    "description": "Team registration closes on this day. Please note that NO registration is accepted after the registrations are closed. Be sure to get registered before the deadline ends.",
     "color": "#10B981"
   },
   {
