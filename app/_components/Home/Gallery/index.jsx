@@ -41,7 +41,7 @@ export default function Gallery() {
   }, []);
 
   return (
-    <main>
+    <main id="gallery">
       <div className="flex items-center w-full justify-center">
         <div className="hidden md:block w-1/4 h-0.5 bg-gray-200 mr-4" />
         <div className="bg-gray-800 px-6 py-2 rounded-full shadow text-white text-xl sm:text-2xl font-semibold">
