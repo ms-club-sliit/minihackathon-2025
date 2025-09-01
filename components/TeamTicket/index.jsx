@@ -134,7 +134,7 @@ const TeamTicket = (props, this_ref) => {
 								<div className="flex flex-col justify-center items-center mr-[40px]">
 									<img
 										width={190}
-										src="/assets/logo-light.png"
+										src="/images/2025-images/logo-main-2025.png"
 										alt="Mini hackathon logo"
 										className="mb-[8px]"
 									/>
