@@ -21,14 +21,14 @@ const step6 = (props) => {
         openNotificationWithIcon(
           "info",
           "Registration completed",
-          "Thank you for registering Minihackathon 2024. We'll send your email invitation shortly. Keep in touch with us."
+          "Thank you for registering Minihackathon 2025. We'll send your email invitation shortly. Keep in touch with us."
         );
       } catch (error) {
         console.error(error);
         openNotificationWithIcon(
           "error",
           "Registration failed",
-          "Kindly contact Minihackathon 2024 organizing committee and share this traceback message: " +
+          "Kindly contact Minihackathon 2025 organizing committee and share this traceback message: " +
           error
         );
       }
