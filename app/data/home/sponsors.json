@@ -21,6 +21,17 @@
       "height": 120
     }
   ],
+  "Gold Partner": [
+    {
+      "id": 3,
+      "src": "/images/home/sponsors/EvokeLogo.png",
+      "alt": "Gold Partner",
+      "name": "EVOKE",
+      "color": "gold",
+      "width": 200,
+      "height": 120
+    }
+  ],
   "Media Partner": [
     {
       "id": 4,
