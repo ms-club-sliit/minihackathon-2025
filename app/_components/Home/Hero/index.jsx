@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import HackathonImage from "../../../../public/images/2025-images/hero-image-up.png";
+import HackathonImage from "../../../../public/images/2025-images/hero.png";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
@@ -49,7 +49,7 @@ export default function Home() {
         </div>
 
         {/* Right Side Image with Previous Animation */}
-        <div className="absolute -bottom-8 lg:-bottom-12 right-0 lg:right-12 w-[50%] lg:w-[38%] opacity-80 transform hover:scale-105 transition-transform duration-700 ease-out">
+        <div className="absolute -bottom-8 lg:-bottom-12 right-0 lg:right-0 w-[75%] lg:w-[38%]  transform hover:scale-105 transition-transform duration-700 ease-out">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-t from-[#]/10 to-transparent blur-3xl"></div>
             <div className="flex justify-end">
