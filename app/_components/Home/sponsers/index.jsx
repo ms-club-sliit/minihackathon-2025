@@ -20,7 +20,7 @@ const Sponsors = () => {
   const categoryMap = {
     'Platinum Sponsors': { label: 'Platinum Partner', color: '#E67700E8' },
     'Knowledge Partners': { label: 'Knowledge Partner', color: '#3B82F6' },
-    'Beverage Partners': { label: 'Beverage Partner', color: '#219C73' },
+    'Gold Partners': { label: 'Gold Partner', color: '#219C73' },
     'Media Partners': { label: 'Media Partner', color: '#6A6970' }, 
     // Add more mappings as needed
   };
@@ -58,13 +58,13 @@ const Sponsors = () => {
   // Get package color based on category (updated for new partner types)
   const getPackageColor = (category) => {
     const categoryLower = category.toLowerCase();
-    if (categoryLower.includes('platinum') || categoryLower.includes('gold')) {
+    if (categoryLower.includes('platinum')) {
       return '#E67700E8';
-    } else if (categoryLower.includes('knowledge') || categoryLower.includes('blue')) {
+    } else if (categoryLower.includes('knowledge')) {
       return '#3B82F6';
-    } else if (categoryLower.includes('beverage') || categoryLower.includes('green')) {
-      return '#219C73';
-    } else if (categoryLower.includes('media') || categoryLower.includes('gray')) {
+    } else if (categoryLower.includes('gold')) {
+      return '#FFD700';
+    } else if (categoryLower.includes('media')) {
       return '#6A6970';
     }
     return '#3B82F6'; // Default

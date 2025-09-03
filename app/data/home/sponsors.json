@@ -6,6 +6,7 @@
       "alt": "Innobot",
       "name": "Innobot",
       "description": "Innovating Healthcare through Automation.",
+      "color": "#E67700E8",
       "width": 200,
       "height": 120
     }
@@ -17,18 +18,29 @@
       "alt": "MSA",
       "name": "MSA",
       "description": "Microsoft Student Ambassadors",
+      "color": "#3B82F6",
       "width": 200,
       "height": 120
     }
   ],
-  
+  "Gold Partner": [
+    {
+      "id": 3,
+      "src": "/images/home/sponsors/EvokeLogo.png",
+      "alt": "Gold Partner",
+      "name": "EVOKE",
+      "color": "#219C73",
+      "width": 200,
+      "height": 120
+    }
+  ],
   "Media Partner": [
     {
       "id": 4,
-      "src": "/images/logos/MediaClubLogo 1.png",
+      "src": "/images/home/sponsors/FCMULogo.webp",
       "alt": "Media",
       "name": "FCMU",
-      "color": "#eb0000",
+      "color": "#6A6970",
       "width": 200,
       "height": 120
     }
