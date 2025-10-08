@@ -14,8 +14,8 @@
       "head": ["Round", "Mode", "Start Date", "End Date"],
       "body": [
         ["Round 1", "Virtual", "02nd September 2025", "30th September 2025"],  
-        ["Round 2", "Virtual", "05th October 2025", "13th October 2025"],
-        ["Round 3", "Physical", "21st October 2025", "21st October 2025"]
+        ["Round 2", "Virtual", "05th October 2025", "10th October 2025"],
+        ["Round 3", "Physical", "12th October 2025", "12th October 2025"]
       ]
     },
     "note": "Note: Above dates can be changed based on the situation."
@@ -253,7 +253,7 @@
       "advancement": {
         "title": "Round 1 Advancement:",
         "content": "All the submissions will be evaluated by Microsoft gold ambassadors and will be marked according to the criteria provided.",
-        "note": "Top 20 teams spanning across all criteria with the highest cumulative mark will be advancing to the next round."
+        "note": "Top 16 teams spanning across all criteria with the highest cumulative mark will be advancing to the next round."
       }
     },
     {
